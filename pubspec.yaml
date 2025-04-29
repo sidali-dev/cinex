@@ -1,0 +1,62 @@
+name: cinex
+description: "A new Flutter project."
+publish_to: 'none' # Remove this line if you wish to publish to pub.dev
+
+version: 1.0.0+1
+
+environment:
+  sdk: ^3.6.1
+
+dependencies:
+  flutter:
+    sdk: flutter
+
+  flutter_localizations:
+    sdk: flutter
+  intl: ^0.19.0
+  get: ^4.6.6
+  flutter_animate: ^4.5.0
+  flutter_dotenv: ^5.2.1
+  get_storage: ^2.1.1
+  shimmer: ^3.0.0
+  dio: ^5.8.0+1
+  carousel_slider: ^5.0.0
+  iconsax: ^0.0.8
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+
+  flutter_lints: ^5.0.0
+
+flutter:
+
+  uses-material-design: true
+
+  assets:
+    - .env
+    - assets/fonts/k2d/
+    - assets/images/
+
+  fonts:
+    - family: K2D
+      fonts:
+        - asset: assets/fonts/k2d/K2D-Thin.ttf
+          weight: 100
+        - asset: assets/fonts/k2d/K2D-ExtraLight.ttf
+          weight: 200
+        - asset: assets/fonts/k2d/K2D-Light.ttf
+          weight: 300
+        - asset: assets/fonts/k2d/K2D-Regular.ttf
+          weight: 400
+        - asset: assets/fonts/k2d/K2D-Medium.ttf
+          weight: 500
+        - asset: assets/fonts/k2d/K2D-SemiBold.ttf
+          weight: 600          
+        - asset: assets/fonts/k2d/K2D-Bold.ttf
+          weight: 700
+        - asset: assets/fonts/k2d/K2D-ExtraBold.ttf
+          weight: 800
+
+flutter_intl:
+  enabled: true
