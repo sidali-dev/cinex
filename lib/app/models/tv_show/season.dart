@@ -1,22 +1,22 @@
 class Season {
-  String airDate;
-  int episodeCount;
-  int id;
-  String name;
-  String overview;
+  String? airDate;
+  int? episodeCount;
+  int? id;
+  String? name;
+  String? overview;
   String? posterPath;
-  int seasonNumber;
-  double voteAverage;
+  int? seasonNumber;
+  double? voteAverage;
 
   Season({
-    required this.airDate,
-    required this.episodeCount,
-    required this.id,
-    required this.name,
-    required this.overview,
-    required this.posterPath,
-    required this.seasonNumber,
-    required this.voteAverage,
+    this.airDate,
+    this.episodeCount,
+    this.id,
+    this.name,
+    this.overview,
+    this.posterPath,
+    this.seasonNumber,
+    this.voteAverage,
   });
 
   Map<String, dynamic> toJson() {
@@ -34,14 +34,14 @@ class Season {
 
   factory Season.fromJson(Map<String, dynamic> map) {
     return Season(
-      airDate: map['air_date'] as String,
-      episodeCount: map['episode_count'] as int,
-      id: map['id'] as int,
-      name: map['name'] as String,
-      overview: map['overview'] as String,
+      airDate: map['air_date'] as String?,
+      episodeCount: map['episode_count'] as int?,
+      id: map['id'] as int?,
+      name: map['name'] as String?,
+      overview: map['overview'] as String?,
       posterPath: map['poster_path'] as String?,
-      seasonNumber: map['season_number'] as int,
-      voteAverage: map['vote_average'] as double,
+      seasonNumber: map['season_number'] as int?,
+      voteAverage: map['vote_average'] as double?,
     );
   }
 }

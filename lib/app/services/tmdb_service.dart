@@ -97,7 +97,7 @@ class TMDbService {
           // 'append_to_response': 'credits,videos',
         },
       );
-      print("=================================================");
+
       return TvShowDetails.fromJson(response.data);
     } catch (e) {
       throw Exception('Failed to fetch movie details: $e');
@@ -133,18 +133,14 @@ class TMDbService {
 
   // Search movies
   Future<MovieResponse> searchMovies(String query, {int page = 1}) async {
-    try {
-      final response = await _dio.get(
-        '/search/movie',
-        queryParameters: {
-          'query': query,
-          'page': page,
-        },
-      );
-      return MovieResponse.fromJson(response.data);
-    } catch (e) {
-      throw Exception('Failed to search movies: $e');
-    }
+    final response = await _dio.get(
+      '/search/movie',
+      queryParameters: {
+        'query': query,
+        'page': page,
+      },
+    );
+    return MovieResponse.fromJson(response.data);
   }
 
   // Get similar movies

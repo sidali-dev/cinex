@@ -1,12 +1,12 @@
 class SpokenLanguage {
-  String englishName;
-  String iso6391;
-  String name;
+  String? englishName;
+  String? iso6391;
+  String? name;
 
   SpokenLanguage({
-    required this.englishName,
-    required this.iso6391,
-    required this.name,
+    this.englishName,
+    this.iso6391,
+    this.name,
   });
 
   Map<String, dynamic> toJson() {
@@ -19,9 +19,9 @@ class SpokenLanguage {
 
   factory SpokenLanguage.fromJson(Map<String, dynamic> map) {
     return SpokenLanguage(
-      englishName: map['english_name'] as String,
-      iso6391: map['iso6391'] as String,
-      name: map['name'] as String,
+      englishName: map['english_name'] as String?,
+      iso6391: map['iso6391'] as String?,
+      name: map['name'] as String?,
     );
   }
 }
