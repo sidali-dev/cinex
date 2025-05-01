@@ -121,8 +121,6 @@ class TMDbService {
         queryParameters: {'page': page},
       );
 
-      print(response.data);
-
       return MovieResponse.fromJson(response.data);
     } catch (e) {
       throw Exception('Failed to fetch on the air tv shows: $e');

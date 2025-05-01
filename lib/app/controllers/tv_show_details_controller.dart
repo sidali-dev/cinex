@@ -41,7 +41,6 @@ class TvShowDetailsController extends GetxController {
       );
       selectedSeasonDetails.value = response;
     } catch (e) {
-      print(e);
       isSeasonError.value = true;
     } finally {
       isSeasonLoading.value = false;
@@ -58,7 +57,6 @@ class TvShowDetailsController extends GetxController {
         await changeSelectedSeason(tvShowDetails!.seasons![0]);
       }
     } catch (e) {
-      print(e);
       isError.value = true;
     } finally {
       isLoading.value = false;

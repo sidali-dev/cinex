@@ -8,40 +8,50 @@ import 'package:cinex/app/models/cast.dart';
 import 'package:cinex/app/views/actor_profile/actor_profile_view.dart';
 import 'package:cinex/app/views/generals/views/see_all_cast_view.dart';
 import 'package:cinex/app/views/generals/views/see_all_movies_view.dart';
-import 'package:cinex/app/views/home_tv_shows/home_tv_shows_view.dart';
 import 'package:cinex/app/views/movie_details/movie_details_view.dart';
 import 'package:cinex/app/views/splash/splash_view.dart';
 import 'package:cinex/app/views/tv_shows_details/tv_show_details_view.dart';
 import 'package:get/get.dart';
 
+import '../controllers/home_controller.dart';
 import '../controllers/movie_details_controller.dart';
 import '../models/movie/movie.dart';
-import '../views/home_movies/home_movies_view.dart';
+import '../views/home/home_view.dart';
 
 part 'app_routes.dart';
 
 class AppPages {
-  static const INITIAL = Routes.HOME_TV_SHOWS;
+  static const INITIAL = Routes.HOME;
 
   static final List<GetPage> routes = [
     GetPage(name: Routes.SPLASH, page: () => SplashView()),
-    GetPage(name: Routes.HOME_MOVIES, page: () => HomeMoviesView(), bindings: [
+    GetPage(name: Routes.HOME, page: () => HomeView(), bindings: [
       BindingsBuilder(
         () {
+          Get.put(HomeController());
           Get.put(HomeMoviesController());
+          Get.put(HomeTvShowsController());
         },
       )
     ]),
-    GetPage(
-        name: Routes.HOME_TV_SHOWS,
-        page: () => HomeTvShowsView(),
-        bindings: [
-          BindingsBuilder(
-            () {
-              Get.put(HomeTvShowsController());
-            },
-          )
-        ]),
+
+    // GetPage(name: Routes.HOME_MOVIES, page: () => HomeMoviesView(), bindings: [
+    //   BindingsBuilder(
+    //     () {
+    //       Get.put(HomeMoviesController());
+    //     },
+    //   )
+    // ]),
+    // GetPage(
+    //     name: Routes.HOME_TV_SHOWS,
+    //     page: () => HomeTvShowsView(),
+    //     bindings: [
+    //       BindingsBuilder(
+    //         () {
+    //           Get.put(HomeTvShowsController());
+    //         },
+    //       )
+    //     ]),
     GetPage(
       name: Routes.MOVIE_DETAILS,
       transition: Transition.downToUp,

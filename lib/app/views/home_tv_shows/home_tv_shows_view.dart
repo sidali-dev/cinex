@@ -5,8 +5,8 @@ import '../../controllers/home_tv_shows_controller.dart';
 import '../../helpers/helper_functions.dart';
 import '../../routes/app_pages.dart';
 import '../home_movies/widgets/movies_list_row_shimmer.dart';
-import '../home_movies/widgets/playing_now.dart';
-import '../home_movies/widgets/playing_now_shimmer.dart';
+import '../generals/widgets/playing_now.dart';
+import '../generals/widgets/playing_now_shimmer.dart';
 import 'widgets/tv_shows_list_row.dart';
 
 class HomeTvShowsView extends GetView<HomeTvShowsController> {

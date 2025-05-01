@@ -26,7 +26,6 @@ class CastColumn extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    print(radius);
     return Column(
       mainAxisAlignment: MainAxisAlignment.start,
       mainAxisSize: MainAxisSize.min,

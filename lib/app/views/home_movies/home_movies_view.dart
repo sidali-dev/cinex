@@ -6,8 +6,8 @@ import 'package:get/get.dart';
 
 import 'widgets/movies_list_row.dart';
 import 'widgets/movies_list_row_shimmer.dart';
-import 'widgets/playing_now.dart';
-import 'widgets/playing_now_shimmer.dart';
+import '../generals/widgets/playing_now.dart';
+import '../generals/widgets/playing_now_shimmer.dart';
 
 class HomeMoviesView extends GetView<HomeMoviesController> {
   const HomeMoviesView({super.key});
