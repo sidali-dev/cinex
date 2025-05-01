@@ -168,7 +168,7 @@ class MovieDetailsView extends GetView<MovieDetailsController> {
               width: 24,
               height: 16,
               child: VerticalDivider(
-                color: Colors.white,
+                color: AppColors.textPrimary(context),
               ),
             ),
             MovieSpecialInfo(
@@ -179,7 +179,7 @@ class MovieDetailsView extends GetView<MovieDetailsController> {
               width: 24,
               height: 16,
               child: VerticalDivider(
-                color: Colors.white,
+                color: AppColors.textPrimary(context),
               ),
             ),
             MovieSpecialInfo(

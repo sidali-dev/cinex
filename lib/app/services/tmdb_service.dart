@@ -1,4 +1,5 @@
 import 'package:cinex/app/models/actor/actor_details.dart';
+import 'package:cinex/app/models/tv_show/season_details.dart';
 import 'package:cinex/app/models/tv_show/tv_show_details.dart';
 import 'package:dio/dio.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
@@ -100,7 +101,24 @@ class TMDbService {
 
       return TvShowDetails.fromJson(response.data);
     } catch (e) {
-      throw Exception('Failed to fetch movie details: $e');
+      throw Exception('Failed to fetch tv show details: $e');
+    }
+  }
+
+  // Get TV show season details
+  Future<SeasonDetails> getTvShowSeasonDetails(
+      int tvShowId, int seasonId) async {
+    try {
+      final response = await _dio.get(
+        '/tv/$tvShowId/season/$seasonId',
+        queryParameters: {
+          // 'append_to_response': 'credits,videos',
+        },
+      );
+
+      return SeasonDetails.fromJson(response.data);
+    } catch (e) {
+      throw Exception('Failed to fetch tv show season details: $e');
     }
   }
 

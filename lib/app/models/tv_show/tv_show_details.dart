@@ -117,25 +117,25 @@ class TvShowDetails {
   factory TvShowDetails.fromJson(Map<String, dynamic> map) {
     return TvShowDetails(
       adult: map['adult'] as bool,
-      backdropPath: map['backdrop_path'] as String,
+      backdropPath: map['backdrop_path'] as String?,
       createdBy: (map['created_by'] as List<dynamic>)
           .map((x) => CreatedBy.fromJson(x as Map<String, dynamic>))
           .toList(),
       episodeRunTime: List<int>.from(map['episode_run_time'] as List<dynamic>),
-      firstAirDate: map['first_air_date'] as String,
+      firstAirDate: map['first_air_date'] as String?,
       genres: (map['genres'] as List<dynamic>)
           .map((x) => Genre.fromJson(x as Map<String, dynamic>))
           .toList(),
-      homepage: map['homepage'] as String,
+      homepage: map['homepage'] as String?,
       id: map['id'] as int,
-      inProduction: map['in_production'] as bool,
+      inProduction: map['in_production'] as bool?,
       languages: List<String>.from(map['languages'] as List<dynamic>),
-      lastAirDate: map['last_air_date'] as String,
+      lastAirDate: map['last_air_date'] as String?,
       lastEpisodeToAir: map['last_episode_to_air'] != null
           ? EpisodeToAir.fromJson(
               map['last_episode_to_air'] as Map<String, dynamic>)
           : null,
-      name: map['name'] as String,
+      name: map['name'] as String?,
       nextEpisodeToAir: map['next_episode_to_air'] != null
           ? EpisodeToAir.fromJson(
               map['next_episode_to_air'] as Map<String, dynamic>)
@@ -143,14 +143,14 @@ class TvShowDetails {
       networks: (map['networks'] as List<dynamic>)
           .map((x) => Network.fromJson(x as Map<String, dynamic>))
           .toList(),
-      numberOfEpisodes: map['number_of_episodes'] as int,
-      numberOfSeasons: map['number_of_seasons'] as int,
+      numberOfEpisodes: map['number_of_episodes'] as int?,
+      numberOfSeasons: map['number_of_seasons'] as int?,
       originCountry: List<String>.from(map['origin_country'] as List<dynamic>),
-      originalLanguage: map['original_language'] as String,
-      originalName: map['original_name'] as String,
-      overview: map['overview'] as String,
+      originalLanguage: map['original_language'] as String?,
+      originalName: map['original_name'] as String?,
+      overview: map['overview'] as String?,
       popularity: (map['popularity'] as num).toDouble(),
-      posterPath: map['poster_path'] as String,
+      posterPath: map['poster_path'] as String?,
       productionCompanies: (map['production_companies'] as List<dynamic>)
           .map((x) => Network.fromJson(x as Map<String, dynamic>))
           .toList(),
@@ -163,11 +163,11 @@ class TvShowDetails {
       spokenLanguages: (map['spoken_languages'] as List<dynamic>)
           .map((x) => SpokenLanguage.fromJson(x as Map<String, dynamic>))
           .toList(),
-      status: map['status'] as String,
-      tagline: map['tagline'] as String,
-      type: map['type'] as String,
+      status: map['status'] as String?,
+      tagline: map['tagline'] as String?,
+      type: map['type'] as String?,
       voteAverage: (map['vote_average'] as num).toDouble(),
-      voteCount: map['vote_count'] as int,
+      voteCount: map['vote_count'] as int?,
     );
   }
 }

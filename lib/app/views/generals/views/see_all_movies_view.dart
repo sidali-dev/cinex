@@ -9,10 +9,12 @@ import '../../../models/movie/movie.dart';
 class SeeAllMoviesView extends StatelessWidget {
   final List<Movie> movies;
   final String title;
+  final bool isMovies;
 
   const SeeAllMoviesView({
     required this.movies,
     required this.title,
+    required this.isMovies,
     super.key,
   });
 
@@ -48,8 +50,15 @@ class SeeAllMoviesView extends StatelessWidget {
                   movie: movies[index],
                   height: screenHeight * 0.24,
                   width: screenHeight * 0.16,
-                  onTap: () => Get.toNamed(Routes.MOVIE_DETAILS,
-                      arguments: {'movie': movies[index]}),
+                  onTap: () {
+                    if (isMovies) {
+                      Get.toNamed(Routes.MOVIE_DETAILS,
+                          arguments: {'movie': movies[index]});
+                    } else {
+                      Get.toNamed(Routes.TV_SHOW_DETAILS,
+                          arguments: {'tv_show': movies[index]});
+                    }
+                  },
                 ),
               ),
             ],

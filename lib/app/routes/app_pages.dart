@@ -2,14 +2,14 @@
 
 import 'package:cinex/app/controllers/actor_profile_controller.dart';
 import 'package:cinex/app/controllers/home_controller.dart';
-import 'package:cinex/app/controllers/tv_shows_controller.dart';
+import 'package:cinex/app/controllers/tv_show_details_controller.dart';
 import 'package:cinex/app/models/cast.dart';
 import 'package:cinex/app/views/actor_profile/actor_profile_view.dart';
 import 'package:cinex/app/views/generals/views/see_all_cast_view.dart';
 import 'package:cinex/app/views/generals/views/see_all_movies_view.dart';
 import 'package:cinex/app/views/movie_details/movie_details_view.dart';
 import 'package:cinex/app/views/splash/splash_view.dart';
-import 'package:cinex/app/views/tv_shows/tv_show_details_view.dart';
+import 'package:cinex/app/views/tv_shows_details/tv_show_details_view.dart';
 import 'package:get/get.dart';
 
 import '../controllers/movie_details_controller.dart';
@@ -49,8 +49,8 @@ class AppPages {
     ),
     GetPage(
       name: Routes.TV_SHOW_DETAILS,
-      transition: Transition.downToUp,
       page: () => TvShowDetailsView(),
+      transition: Transition.downToUp,
       bindings: [
         BindingsBuilder(() {
           final movie = Get.arguments['tv_show'] as Movie;
@@ -84,6 +84,7 @@ class AppPages {
           return SeeAllMoviesView(
             movies: args["movies_list"],
             title: args["title"],
+            isMovies: args["is_movies"],
           );
         }),
     GetPage(

@@ -21,13 +21,10 @@ class MovieDetailsController extends GetxController {
   fetchDetails() async {
     try {
       isLoading.value = true;
-      print(movie.id);
-      print("==========================");
 
       final response = await TMDbService().getMovieDetails(movie.id);
       movieDetails = response;
     } catch (e) {
-      print(e);
       isError.value = true;
     } finally {
       isLoading.value = false;

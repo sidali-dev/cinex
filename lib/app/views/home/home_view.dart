@@ -62,6 +62,7 @@ class HomeView extends GetView<HomeController> {
               Get.toNamed(Routes.SEE_ALL_MOVIES, arguments: {
                 'movies_list': controller.upcomingMovies,
                 "title": "Upcoming Movies",
+                "is_movies": true,
               });
             },
           ),
@@ -75,6 +76,7 @@ class HomeView extends GetView<HomeController> {
               Get.toNamed(Routes.SEE_ALL_MOVIES, arguments: {
                 'movies_list': controller.popularMovies,
                 "title": "Popular Movies",
+                "is_movies": true,
               });
             },
           ),
@@ -88,6 +90,7 @@ class HomeView extends GetView<HomeController> {
               Get.toNamed(Routes.SEE_ALL_MOVIES, arguments: {
                 'movies_list': controller.topRatedMovies,
                 "title": "Top Rated Movies",
+                "is_movies": true,
               });
             },
           ),

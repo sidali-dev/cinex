@@ -6,6 +6,7 @@ import 'package:cinex/app/routes/app_pages.dart';
 import 'package:cinex/app/views/generals/widgets/auto_scrolling_text.dart';
 import 'package:cinex/app/views/generals/widgets/read_more_text.dart';
 import 'package:cinex/app/views/home/widgets/movies_list_row.dart';
+import 'package:cinex/app/views/movie_details/widgets/tv_shows_list_row.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -140,6 +141,7 @@ class ActorProfileView extends GetView<ActorProfileController> {
                             Routes.SEE_ALL_MOVIES,
                             arguments: {
                               "movies_list": movies,
+                              "is_movies": true,
                               "title": "${controller.cast.name} Movies",
                             },
                           );
@@ -157,9 +159,9 @@ class ActorProfileView extends GetView<ActorProfileController> {
 
                       return Padding(
                         padding: const EdgeInsets.symmetric(vertical: 32.0),
-                        child: MoviesListRow(
+                        child: TvShowsListRow(
                             title: "TV Shows",
-                            movies: tvShows,
+                            tvShows: tvShows,
                             height: screenHeight * 0.24,
                             width: screenHeight * 0.16,
                             onTap: () {
@@ -167,6 +169,7 @@ class ActorProfileView extends GetView<ActorProfileController> {
                                 Routes.SEE_ALL_MOVIES,
                                 arguments: {
                                   "movies_list": tvShows,
+                                  "is_movies": false,
                                   "title": "${controller.cast.name} TV Shows",
                                 },
                               );
