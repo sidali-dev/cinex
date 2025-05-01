@@ -26,6 +26,7 @@ class CastColumn extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    print(radius);
     return Column(
       mainAxisAlignment: MainAxisAlignment.start,
       mainAxisSize: MainAxisSize.min,
@@ -52,8 +53,8 @@ class CastColumn extends StatelessWidget {
           ),
         ),
         SizedBox(height: 8.0),
-        Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 8.0),
+        SizedBox(
+          width: radius * 2.5,
           child: Text(
             name,
             style: TextStyle(fontWeight: FontWeight.bold, fontSize: 16.0),
@@ -61,8 +62,8 @@ class CastColumn extends StatelessWidget {
             overflow: TextOverflow.ellipsis,
           ),
         ),
-        Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 8.0),
+        SizedBox(
+          width: radius * 2.5,
           child: Text(
             description != null ? description! : "Unknown",
             style: TextStyle(fontSize: 14.0),
