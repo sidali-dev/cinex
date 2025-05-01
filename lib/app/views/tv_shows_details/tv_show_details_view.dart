@@ -109,7 +109,7 @@ class TvShowDetailsView extends GetView<TvShowDetailsController> {
                     child: Padding(
                       padding: const EdgeInsets.symmetric(horizontal: 32.0),
                       child: Text(
-                        controller.tvShow.title!,
+                        controller.tvShow.name!,
                         style: TextStyle(
                           color: AppColors.textPrimary(context),
                           fontSize: 32,

@@ -3,7 +3,7 @@ import 'package:get/get.dart';
 import '../models/movie/movie.dart';
 import '../services/tmdb_service.dart';
 
-class HomeController extends GetxController {
+class HomeMoviesController extends GetxController {
   final RxBool isLoading = false.obs;
   final RxBool isError = false.obs;
 

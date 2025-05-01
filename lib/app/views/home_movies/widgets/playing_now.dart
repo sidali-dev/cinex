@@ -13,11 +13,13 @@ class PlayingNow extends StatelessWidget {
     required this.screenHeight,
     required this.screenWidth,
     required this.playingNow,
+    required this.isMovies,
   });
 
   final double screenHeight;
   final double screenWidth;
   final List<Movie> playingNow;
+  final bool isMovies;
 
   @override
   Widget build(BuildContext context) {
@@ -123,8 +125,15 @@ class PlayingNow extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               GestureDetector(
-                  onTap: () => Get.toNamed(Routes.MOVIE_DETAILS,
-                      arguments: {'movie': playingNow[currentIndex]}),
+                  onTap: () {
+                    if (isMovies) {
+                      Get.toNamed(Routes.MOVIE_DETAILS,
+                          arguments: {'movie': playingNow[currentIndex]});
+                    } else {
+                      Get.toNamed(Routes.TV_SHOW_DETAILS,
+                          arguments: {'tv_show': playingNow[currentIndex]});
+                    }
+                  },
                   child: Icon(Icons.info_outline)),
               SizedBox(width: 16),
               ElevatedButton(

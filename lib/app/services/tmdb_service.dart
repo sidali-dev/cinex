@@ -35,6 +35,19 @@ class TMDbService {
     }
   }
 
+  // Get popular tv shows
+  Future<MovieResponse> getPopularTvShows({int page = 1}) async {
+    try {
+      final response = await _dio.get(
+        '/tv/popular',
+        queryParameters: {'page': page},
+      );
+      return MovieResponse.fromJson(response.data);
+    } catch (e) {
+      throw Exception('Failed to fetch popular tv shows: $e');
+    }
+  }
+
   // Get top rated movies
   Future<MovieResponse> getTopRatedMovies({int page = 1}) async {
     try {
@@ -45,6 +58,19 @@ class TMDbService {
       return MovieResponse.fromJson(response.data);
     } catch (e) {
       throw Exception('Failed to fetch top rated movies: $e');
+    }
+  }
+
+  // Get top rated tv shows
+  Future<MovieResponse> getTopRatedTvShows({int page = 1}) async {
+    try {
+      final response = await _dio.get(
+        '/tv/top_rated',
+        queryParameters: {'page': page},
+      );
+      return MovieResponse.fromJson(response.data);
+    } catch (e) {
+      throw Exception('Failed to fetch top rated tv shows: $e');
     }
   }
 
@@ -61,6 +87,19 @@ class TMDbService {
     }
   }
 
+  // Get now playing tv shows
+  Future<MovieResponse> getAiringTodayTvShows({int page = 1}) async {
+    try {
+      final response = await _dio.get(
+        '/tv/airing_today',
+        queryParameters: {'page': page},
+      );
+      return MovieResponse.fromJson(response.data);
+    } catch (e) {
+      throw Exception('Failed to fetch airing today tv shows: $e');
+    }
+  }
+
   // Get now playing movies
   Future<MovieResponse> getNowPlayingMovies({int page = 1}) async {
     try {
@@ -71,6 +110,22 @@ class TMDbService {
       return MovieResponse.fromJson(response.data);
     } catch (e) {
       throw Exception('Failed to fetch now playing movies: $e');
+    }
+  }
+
+  // Get on the air tv shows
+  Future<MovieResponse> getOnTheAirTvShows({int page = 1}) async {
+    try {
+      final response = await _dio.get(
+        '/tv/on_the_air',
+        queryParameters: {'page': page},
+      );
+
+      print(response.data);
+
+      return MovieResponse.fromJson(response.data);
+    } catch (e) {
+      throw Exception('Failed to fetch on the air tv shows: $e');
     }
   }
 

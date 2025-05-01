@@ -5,6 +5,8 @@ part of 'app_pages.dart';
 abstract class Routes {
   static const SPLASH = '/splash';
   static const HOME = '/home';
+  static const HOME_MOVIES = '/home-movies';
+  static const HOME_TV_SHOWS = '/home-tv-shows';
   static const MOVIE_DETAILS = '/movie-details';
   static const TV_SHOW_DETAILS = '/tv-show-details';
   static const SEE_ALL_CAST = '/see-all-cast';

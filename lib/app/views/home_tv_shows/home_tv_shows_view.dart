@@ -1,17 +1,16 @@
-import 'package:cinex/app/controllers/home_controller.dart';
-import 'package:cinex/app/controllers/theme_controller.dart';
-import 'package:cinex/app/helpers/helper_functions.dart';
-import 'package:cinex/app/routes/app_pages.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
-import 'widgets/movies_list_row.dart';
-import 'widgets/movies_list_row_shimmer.dart';
-import 'widgets/playing_now.dart';
-import 'widgets/playing_now_shimmer.dart';
+import '../../controllers/home_tv_shows_controller.dart';
+import '../../helpers/helper_functions.dart';
+import '../../routes/app_pages.dart';
+import '../home_movies/widgets/movies_list_row_shimmer.dart';
+import '../home_movies/widgets/playing_now.dart';
+import '../home_movies/widgets/playing_now_shimmer.dart';
+import 'widgets/tv_shows_list_row.dart';
 
-class HomeView extends GetView<HomeController> {
-  const HomeView({super.key});
+class HomeTvShowsView extends GetView<HomeTvShowsController> {
+  const HomeTvShowsView({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -19,13 +18,6 @@ class HomeView extends GetView<HomeController> {
     final screenWidth = HelperFunctions.screenWidth(context);
 
     return Scaffold(
-      floatingActionButton: FloatingActionButton(
-        onPressed: () {
-          ThemeController themeController = Get.find();
-          themeController.switchTheme();
-        },
-        child: Icon(Icons.lightbulb_outlined),
-      ),
       body: Obx(
         () {
           if (controller.isLoading.value == true) {
@@ -51,46 +43,47 @@ class HomeView extends GetView<HomeController> {
           PlayingNow(
               screenHeight: screenHeight,
               screenWidth: screenWidth,
-              playingNow: controller.nowPlayingMovies),
+              playingNow: controller.airingTodayShows,
+              isMovies: false),
           const SizedBox(height: 48),
-          MoviesListRow(
+          TvShowsListRow(
             height: screenHeight * 0.24,
             width: screenHeight * 0.16,
-            title: 'Upcoming Movies',
-            movies: controller.upcomingMovies,
+            title: 'Ongoing TV Shows',
+            tvShows: controller.onTheAirTvShows,
             onTap: () {
               Get.toNamed(Routes.SEE_ALL_MOVIES, arguments: {
-                'movies_list': controller.upcomingMovies,
-                "title": "Upcoming Movies",
-                "is_movies": true,
+                'movies_list': controller.onTheAirTvShows,
+                "title": "Ongoing TV Shows",
+                "is_movies": false,
               });
             },
           ),
           const SizedBox(height: 32),
-          MoviesListRow(
+          TvShowsListRow(
             height: screenHeight * 0.24,
             width: screenHeight * 0.16,
-            title: 'Popular Movies',
-            movies: controller.popularMovies,
+            title: 'Popular TV Shows',
+            tvShows: controller.popularTvShows,
             onTap: () {
               Get.toNamed(Routes.SEE_ALL_MOVIES, arguments: {
-                'movies_list': controller.popularMovies,
-                "title": "Popular Movies",
-                "is_movies": true,
+                'movies_list': controller.popularTvShows,
+                "title": "Popular TV Shows",
+                "is_movies": false,
               });
             },
           ),
           const SizedBox(height: 32),
-          MoviesListRow(
+          TvShowsListRow(
             height: screenHeight * 0.24,
             width: screenHeight * 0.16,
-            title: 'Top Rated Movies',
-            movies: controller.topRatedMovies,
+            title: 'Top Rated TV Shows',
+            tvShows: controller.topRatedTvShows,
             onTap: () {
               Get.toNamed(Routes.SEE_ALL_MOVIES, arguments: {
-                'movies_list': controller.topRatedMovies,
-                "title": "Top Rated Movies",
-                "is_movies": true,
+                'movies_list': controller.topRatedTvShows,
+                "title": "Top Rated TV Shows",
+                "is_movies": false,
               });
             },
           ),
@@ -110,17 +103,17 @@ class HomeView extends GetView<HomeController> {
               screenHeight: screenHeight, screenWidth: screenWidth),
           const SizedBox(height: 48),
           MoviesListRowShimmer(
-              title: "Upcoming Movies",
+              title: "Ongoing TV Shows",
               height: screenHeight * 0.24,
               width: screenHeight * 0.16),
           const SizedBox(height: 32),
           MoviesListRowShimmer(
-              title: "Popular Movies",
+              title: "Popular TV Shows",
               height: screenHeight * 0.24,
               width: screenHeight * 0.16),
           const SizedBox(height: 32),
           MoviesListRowShimmer(
-              title: "Top Rated Movies",
+              title: "Top Rated TV Shows",
               height: screenHeight * 0.24,
               width: screenHeight * 0.16),
         ],

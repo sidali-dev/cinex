@@ -5,8 +5,8 @@ import 'package:cinex/app/models/movie/movie.dart';
 import 'package:cinex/app/routes/app_pages.dart';
 import 'package:cinex/app/views/generals/widgets/auto_scrolling_text.dart';
 import 'package:cinex/app/views/generals/widgets/read_more_text.dart';
-import 'package:cinex/app/views/home/widgets/movies_list_row.dart';
-import 'package:cinex/app/views/movie_details/widgets/tv_shows_list_row.dart';
+import 'package:cinex/app/views/home_movies/widgets/movies_list_row.dart';
+import 'package:cinex/app/views/home_tv_shows/widgets/tv_shows_list_row.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 

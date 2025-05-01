@@ -13,6 +13,9 @@ class Movie {
   final String? originalTitle;
   final double? popularity;
   final bool? video;
+  //
+  final String? firstAirDate;
+  final String? name;
 
   Movie({
     required this.id,
@@ -29,6 +32,8 @@ class Movie {
     this.originalTitle,
     this.popularity,
     this.video,
+    this.firstAirDate,
+    this.name,
   });
 
   factory Movie.fromJson(Map<String, dynamic> json) {
@@ -47,6 +52,8 @@ class Movie {
       originalTitle: json['original_title'] as String?,
       popularity: (json['popularity'] as num?)?.toDouble(),
       video: json['video'] as bool?,
+      firstAirDate: json['first_air_date'] as String?,
+      name: json['name'] as String?,
     );
   }
 
@@ -66,6 +73,8 @@ class Movie {
       'original_title': originalTitle,
       'popularity': popularity,
       'video': video,
+      'first_air_date': firstAirDate,
+      'name': name,
     };
   }
 }
