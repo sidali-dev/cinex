@@ -4,6 +4,7 @@ import 'package:cinex/app/controllers/actor_profile_controller.dart';
 import 'package:cinex/app/controllers/home_movies_controller.dart';
 import 'package:cinex/app/controllers/home_tv_shows_controller.dart';
 import 'package:cinex/app/controllers/navigation_controller.dart';
+import 'package:cinex/app/controllers/search_controller.dart';
 import 'package:cinex/app/controllers/tv_show_details_controller.dart';
 import 'package:cinex/app/models/cast.dart';
 import 'package:cinex/app/views/actor_profile/actor_profile_view.dart';
@@ -35,6 +36,7 @@ class AppPages {
           () {
             Get.put(NavigationController());
             Get.put(HomeController());
+            Get.put(MovieSearchController());
             Get.put(HomeMoviesController());
             Get.put(HomeTvShowsController());
           },
@@ -46,24 +48,6 @@ class AppPages {
         () {},
       )
     ]),
-
-    // GetPage(name: Routes.HOME_MOVIES, page: () => HomeMoviesView(), bindings: [
-    //   BindingsBuilder(
-    //     () {
-    //       Get.put(HomeMoviesController());
-    //     },
-    //   )
-    // ]),
-    // GetPage(
-    //     name: Routes.HOME_TV_SHOWS,
-    //     page: () => HomeTvShowsView(),
-    //     bindings: [
-    //       BindingsBuilder(
-    //         () {
-    //           Get.put(HomeTvShowsController());
-    //         },
-    //       )
-    //     ]),
     GetPage(
       name: Routes.MOVIE_DETAILS,
       transition: Transition.downToUp,

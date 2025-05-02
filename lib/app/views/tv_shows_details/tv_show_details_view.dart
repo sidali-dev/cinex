@@ -109,7 +109,9 @@ class TvShowDetailsView extends GetView<TvShowDetailsController> {
                     child: Padding(
                       padding: const EdgeInsets.symmetric(horizontal: 32.0),
                       child: Text(
-                        controller.tvShow.name!,
+                        controller.tvShow.name ??
+                            controller.tvShow.title ??
+                            "ERROR",
                         style: TextStyle(
                           color: AppColors.textPrimary(context),
                           fontSize: 32,
@@ -182,30 +184,6 @@ class TvShowDetailsView extends GetView<TvShowDetailsController> {
             ),
           ],
         ),
-        // const SizedBox(height: 16),
-        // Padding(
-        //   padding: const EdgeInsets.symmetric(horizontal: 32.0),
-        //   child: ElevatedButton(
-        //     onPressed: () {},
-        //     child: Row(
-        //       mainAxisAlignment: MainAxisAlignment.center,
-        //       children: [
-        //         Icon(
-        //           Icons.play_arrow,
-        //           color: Colors.white,
-        //         ),
-        //         SizedBox(width: 8),
-        //         Text(
-        //           'Watch Trailer',
-        //           style: TextStyle(
-        //             fontWeight: FontWeight.bold,
-        //             fontSize: 20,
-        //           ),
-        //         ),
-        //       ],
-        //     ),
-        //   ),
-        // ),
         const SizedBox(height: 24),
         Visibility(
           visible: controller.tvShow.overview != null,

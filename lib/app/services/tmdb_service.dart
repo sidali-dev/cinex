@@ -1,4 +1,5 @@
 import 'package:cinex/app/models/actor/actor_details.dart';
+import 'package:cinex/app/models/search/search_results.dart';
 import 'package:cinex/app/models/tv_show/season_details.dart';
 import 'package:cinex/app/models/tv_show/tv_show_details.dart';
 import 'package:dio/dio.dart';
@@ -202,16 +203,16 @@ class TMDbService {
     }
   }
 
-  // Search movies
-  Future<MovieResponse> searchMovies(String query, {int page = 1}) async {
+  // Search movies, tv shows, and people
+  Future<SearchResults> searchAll(String query, {int page = 1}) async {
     final response = await _dio.get(
-      '/search/movie',
+      '/search/multi',
       queryParameters: {
         'query': query,
         'page': page,
       },
     );
-    return MovieResponse.fromJson(response.data);
+    return SearchResults.fromJson(response.data);
   }
 
   // Get similar movies

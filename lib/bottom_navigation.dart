@@ -1,5 +1,6 @@
 import 'package:cinex/app/controllers/navigation_controller.dart';
 import 'package:cinex/app/views/home/home_view.dart';
+import 'package:cinex/app/views/search/search_view.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:iconsax/iconsax.dart';
@@ -17,7 +18,7 @@ class BottomNavigation extends GetView<NavigationController> {
           case 0:
             return HomeView();
           case 1:
-            return SizedBox();
+            return SearchView();
           case 2:
             return SizedBox();
           default:

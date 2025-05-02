@@ -72,6 +72,7 @@ class TvShowEpisodeCard extends StatelessWidget {
                 fontSize: 14,
                 fontWeight: FontWeight.w600,
               ),
+              overflow: TextOverflow.ellipsis,
               textAlign: TextAlign.start),
           Text(episode.runtime != null ? "${episode.runtime!} min" : "unknown",
               style: TextStyle(
