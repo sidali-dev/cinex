@@ -3,6 +3,7 @@
 import 'package:cinex/app/controllers/actor_profile_controller.dart';
 import 'package:cinex/app/controllers/home_movies_controller.dart';
 import 'package:cinex/app/controllers/home_tv_shows_controller.dart';
+import 'package:cinex/app/controllers/navigation_controller.dart';
 import 'package:cinex/app/controllers/tv_show_details_controller.dart';
 import 'package:cinex/app/models/cast.dart';
 import 'package:cinex/app/views/actor_profile/actor_profile_view.dart';
@@ -11,6 +12,7 @@ import 'package:cinex/app/views/generals/views/see_all_movies_view.dart';
 import 'package:cinex/app/views/movie_details/movie_details_view.dart';
 import 'package:cinex/app/views/splash/splash_view.dart';
 import 'package:cinex/app/views/tv_shows_details/tv_show_details_view.dart';
+import 'package:cinex/bottom_navigation.dart';
 import 'package:get/get.dart';
 
 import '../controllers/home_controller.dart';
@@ -21,17 +23,27 @@ import '../views/home/home_view.dart';
 part 'app_routes.dart';
 
 class AppPages {
-  static const INITIAL = Routes.HOME;
+  static const INITIAL = Routes.BOTTOM_NAVIGATION;
 
   static final List<GetPage> routes = [
     GetPage(name: Routes.SPLASH, page: () => SplashView()),
+    GetPage(
+      name: Routes.BOTTOM_NAVIGATION,
+      page: () => const BottomNavigation(),
+      bindings: [
+        BindingsBuilder(
+          () {
+            Get.put(NavigationController());
+            Get.put(HomeController());
+            Get.put(HomeMoviesController());
+            Get.put(HomeTvShowsController());
+          },
+        ),
+      ],
+    ),
     GetPage(name: Routes.HOME, page: () => HomeView(), bindings: [
       BindingsBuilder(
-        () {
-          Get.put(HomeController());
-          Get.put(HomeMoviesController());
-          Get.put(HomeTvShowsController());
-        },
+        () {},
       )
     ]),
 

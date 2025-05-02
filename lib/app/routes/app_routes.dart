@@ -4,6 +4,7 @@ part of 'app_pages.dart';
 
 abstract class Routes {
   static const SPLASH = '/splash';
+  static const BOTTOM_NAVIGATION = '/bottom-navigation';
   static const HOME = '/home';
   static const HOME_MOVIES = '/home-movies';
   static const HOME_TV_SHOWS = '/home-tv-shows';
