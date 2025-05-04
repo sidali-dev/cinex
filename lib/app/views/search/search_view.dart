@@ -88,6 +88,20 @@ class SearchView extends GetView<MovieSearchController> {
           mainAxisSize: MainAxisSize.min,
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
+            Visibility(
+              visible: controller.searchResults.value!.resultsPerson.isNotEmpty,
+              child: Padding(
+                padding:
+                    const EdgeInsets.only(left: 16.0, right: 16.0, top: 16.0),
+                child: Text(
+                  "Actors",
+                  style: TextStyle(
+                    fontSize: 20,
+                    fontWeight: FontWeight.w900,
+                  ),
+                ),
+              ),
+            ),
             SingleChildScrollView(
               scrollDirection: Axis.horizontal,
               child: Padding(
@@ -118,15 +132,18 @@ class SearchView extends GetView<MovieSearchController> {
                 ),
               ),
             ),
-            Padding(
-              padding: const EdgeInsets.symmetric(
-                horizontal: 16.0,
-              ),
-              child: Text(
-                "Movies",
-                style: TextStyle(
-                  fontSize: 20,
-                  fontWeight: FontWeight.w900,
+            Visibility(
+              visible: controller.searchResults.value!.resultsMovie.isNotEmpty,
+              child: Padding(
+                padding: const EdgeInsets.symmetric(
+                  horizontal: 16.0,
+                ),
+                child: Text(
+                  "Movies",
+                  style: TextStyle(
+                    fontSize: 20,
+                    fontWeight: FontWeight.w900,
+                  ),
                 ),
               ),
             ),
@@ -153,14 +170,17 @@ class SearchView extends GetView<MovieSearchController> {
                     .toList(),
               ),
             ),
-            Padding(
-              padding:
-                  const EdgeInsets.only(left: 16.0, right: 16.0, top: 16.0),
-              child: Text(
-                "Tv Shows",
-                style: TextStyle(
-                  fontSize: 20,
-                  fontWeight: FontWeight.w900,
+            Visibility(
+              visible: controller.searchResults.value!.resultsTvShow.isNotEmpty,
+              child: Padding(
+                padding:
+                    const EdgeInsets.only(left: 16.0, right: 16.0, top: 16.0),
+                child: Text(
+                  "Tv Shows",
+                  style: TextStyle(
+                    fontSize: 20,
+                    fontWeight: FontWeight.w900,
+                  ),
                 ),
               ),
             ),
