@@ -1,4 +1,5 @@
 import 'package:cinex/app/controllers/navigation_controller.dart';
+import 'package:cinex/app/views/bookmarks/bookmarks_view.dart';
 import 'package:cinex/app/views/home/home_view.dart';
 import 'package:cinex/app/views/search/search_view.dart';
 import 'package:flutter/material.dart';
@@ -20,9 +21,9 @@ class BottomNavigation extends GetView<NavigationController> {
           case 1:
             return SearchView();
           case 2:
-            return SizedBox();
+            return BookmarksView();
           default:
-            return SizedBox.shrink();
+            return HomeView();
         }
       }),
       bottomNavigationBar: Obx(

@@ -1,5 +1,8 @@
+import 'package:cinex/app/controllers/bookmarks_controller.dart';
 import 'package:cinex/app/models/tv_show/season.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get_instance/get_instance.dart';
+import 'package:get/get_rx/src/rx_types/rx_types.dart';
 import 'package:get/get_state_manager/get_state_manager.dart';
 import 'package:get/route_manager.dart';
 import 'package:iconsax/iconsax.dart';
@@ -150,6 +153,10 @@ class TvShowDetailsView extends GetView<TvShowDetailsController> {
   }
 
   Widget _onSuccess(BuildContext context, double screenWidth) {
+    BookmarksController bookmarksController = Get.find<BookmarksController>();
+    RxBool isBookmarked =
+        bookmarksController.isBookmarked(controller.tvShow.id, false).obs;
+
     return Column(
       children: [
         const SizedBox(height: 16),
@@ -185,6 +192,73 @@ class TvShowDetailsView extends GetView<TvShowDetailsController> {
           ],
         ),
         const SizedBox(height: 24),
+        Row(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Obx(
+              () {
+                if (isBookmarked.value) {
+                  return ElevatedButton(
+                    style: ElevatedButton.styleFrom(
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(32.0),
+                      ),
+                    ),
+                    onPressed: () {
+                      bookmarksController.removeBookmark(
+                          controller.tvShow.id, false);
+                      isBookmarked.value = false;
+                    },
+                    child: Row(
+                      children: [
+                        Icon(
+                          Icons.bookmark_rounded,
+                          color: Colors.white,
+                        ),
+                        SizedBox(width: 8),
+                        Text(
+                          'Bookmarked',
+                          style: TextStyle(
+                            fontSize: 20.0,
+                          ),
+                        ),
+                      ],
+                    ),
+                  );
+                } else {
+                  return ElevatedButton(
+                    style: ElevatedButton.styleFrom(
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(32.0),
+                      ),
+                    ),
+                    onPressed: () {
+                      bookmarksController.addBookmark(
+                          controller.tvShow.id, false);
+                      isBookmarked.value = true;
+                    },
+                    child: Row(
+                      children: [
+                        Icon(
+                          Icons.bookmark_border_rounded,
+                          color: Colors.white,
+                        ),
+                        SizedBox(width: 8),
+                        Text(
+                          'Bookmark',
+                          style: TextStyle(
+                            fontSize: 20.0,
+                          ),
+                        ),
+                      ],
+                    ),
+                  );
+                }
+              },
+            )
+          ],
+        ),
+        const SizedBox(height: 16),
         Visibility(
           visible: controller.tvShow.overview != null,
           child: Column(

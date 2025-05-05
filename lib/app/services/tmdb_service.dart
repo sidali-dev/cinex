@@ -8,12 +8,12 @@ import '../models/movie/movie_details.dart';
 import '../models/movie_response.dart';
 import '../models/video_reponse.dart';
 
-class TMDbService {
+class TmdbService {
   final Dio _dio;
   final String _baseUrl = 'https://api.themoviedb.org/3';
   late final String _apiKey;
 
-  TMDbService() : _dio = Dio() {
+  TmdbService() : _dio = Dio() {
     _apiKey = dotenv.env['TMDB_KEY'] ?? '';
     _dio.options.baseUrl = _baseUrl;
     _dio.options.queryParameters = {'api_key': _apiKey};

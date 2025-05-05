@@ -12,7 +12,7 @@ class Test extends StatelessWidget {
         body: Center(
           child: ElevatedButton(
             onPressed: () async {
-              TMDbService service = TMDbService();
+              TmdbService service = TmdbService();
               await service.getTvShowDetails(2224);
             },
             child: Text("TEST"),

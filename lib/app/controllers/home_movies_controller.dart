@@ -21,7 +21,7 @@ class HomeMoviesController extends GetxController {
   Future<void> fetchMovies() async {
     isLoading.value = true;
     try {
-      final TMDbService tmdbService = TMDbService();
+      final TmdbService tmdbService = TmdbService();
 
       final topRatedResponse = await tmdbService.getTopRatedMovies();
       final popularResponse = await tmdbService.getPopularMovies();

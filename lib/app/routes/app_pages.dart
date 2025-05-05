@@ -1,6 +1,7 @@
 // ignore_for_file: constant_identifier_names
 
 import 'package:cinex/app/controllers/actor_profile_controller.dart';
+import 'package:cinex/app/controllers/bookmarks_controller.dart';
 import 'package:cinex/app/controllers/home_movies_controller.dart';
 import 'package:cinex/app/controllers/home_tv_shows_controller.dart';
 import 'package:cinex/app/controllers/navigation_controller.dart';
@@ -38,6 +39,7 @@ class AppPages {
             Get.put(HomeController());
             Get.put(MovieSearchController());
             Get.put(HomeMoviesController());
+            Get.put(BookmarksController());
             Get.put(HomeTvShowsController());
           },
         ),

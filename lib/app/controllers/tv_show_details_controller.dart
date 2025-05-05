@@ -35,7 +35,7 @@ class TvShowDetailsController extends GetxController {
   fetchSeasonDetails() async {
     try {
       isSeasonLoading.value = true;
-      final response = await TMDbService().getTvShowSeasonDetails(
+      final response = await TmdbService().getTvShowSeasonDetails(
         tvShow.id,
         selectedSeason.value.seasonNumber!,
       );
@@ -51,7 +51,7 @@ class TvShowDetailsController extends GetxController {
     try {
       isLoading.value = true;
 
-      final response = await TMDbService().getTvShowDetails(tvShow.id);
+      final response = await TmdbService().getTvShowDetails(tvShow.id);
       tvShowDetails = response;
       if (tvShowDetails!.seasons != null) {
         await changeSelectedSeason(tvShowDetails!.seasons![0]);

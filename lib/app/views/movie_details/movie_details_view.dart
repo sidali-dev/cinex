@@ -1,4 +1,5 @@
 import 'package:cinex/app/constants/tmdb_constants.dart';
+import 'package:cinex/app/controllers/bookmarks_controller.dart';
 import 'package:cinex/app/controllers/movie_details_controller.dart';
 import 'package:cinex/app/helpers/helper_functions.dart';
 import 'package:cinex/app/routes/app_pages.dart';
@@ -153,6 +154,10 @@ class MovieDetailsView extends GetView<MovieDetailsController> {
         ? 5
         : controller.movieDetails!.credits!.crew!.length;
 
+    BookmarksController bookmarksController = Get.find<BookmarksController>();
+    RxBool isBookmarked =
+        bookmarksController.isBookmarked(controller.movieDetails!.id, true).obs;
+
     return Column(
       children: [
         const SizedBox(height: 16),
@@ -191,25 +196,59 @@ class MovieDetailsView extends GetView<MovieDetailsController> {
         const SizedBox(height: 16),
         Padding(
           padding: const EdgeInsets.symmetric(horizontal: 32.0),
-          child: ElevatedButton(
-            onPressed: () {},
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                Icon(
-                  Icons.play_arrow,
-                  color: Colors.white,
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              ElevatedButton(
+                onPressed: () {},
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Icon(
+                      Icons.play_arrow,
+                      color: Colors.white,
+                    ),
+                    SizedBox(width: 8),
+                    Text(
+                      'Watch Trailer',
+                      style: TextStyle(
+                        fontWeight: FontWeight.bold,
+                        fontSize: 20,
+                      ),
+                    ),
+                  ],
                 ),
-                SizedBox(width: 8),
-                Text(
-                  'Watch Trailer',
-                  style: TextStyle(
-                    fontWeight: FontWeight.bold,
-                    fontSize: 20,
-                  ),
+              ),
+              const SizedBox(width: 16),
+              GestureDetector(
+                onTap: () {
+                  if (isBookmarked.value) {
+                    bookmarksController.removeBookmark(
+                        controller.movieDetails!.id, true);
+                    isBookmarked.value = false;
+                  } else {
+                    bookmarksController.addBookmark(
+                        controller.movieDetails!.id, true);
+                    isBookmarked.value = true;
+                  }
+                },
+                child: Obx(
+                  () {
+                    if (isBookmarked.value) {
+                      return Icon(
+                        Icons.bookmark_rounded,
+                        color: AppColors.primary(context),
+                      );
+                    } else {
+                      return Icon(
+                        Icons.bookmark_border_rounded,
+                        color: AppColors.primary(context),
+                      );
+                    }
+                  },
                 ),
-              ],
-            ),
+              )
+            ],
           ),
         ),
         const SizedBox(height: 24),

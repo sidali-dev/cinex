@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 class MovieSearchController extends GetxController {
-  final TMDbService tmdbService = TMDbService();
+  final TmdbService tmdbService = TmdbService();
   final TextEditingController searchController = TextEditingController();
   final RxBool isLoading = false.obs;
   final RxBool isError = false.obs;

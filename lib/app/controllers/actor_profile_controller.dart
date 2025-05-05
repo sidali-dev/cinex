@@ -24,7 +24,7 @@ class ActorProfileController extends GetxController {
     try {
       isLoading.value = true;
 
-      actorDetails = await TMDbService().getActorDetails(cast.id);
+      actorDetails = await TmdbService().getActorDetails(cast.id);
     } catch (e) {
       isError.value = true;
     } finally {

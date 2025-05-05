@@ -1,8 +1,9 @@
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:cinex/app/constants/tmdb_constants.dart';
+import 'package:cinex/app/controllers/bookmarks_controller.dart';
 import 'package:cinex/app/routes/app_pages.dart';
 import 'package:flutter/material.dart';
-import 'package:get/route_manager.dart';
+import 'package:get/get.dart';
 
 import '../../../models/movie/movie.dart';
 import '../../../theme/app_colors.dart';
@@ -23,7 +24,11 @@ class PlayingNow extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    BookmarksController controller = Get.find<BookmarksController>();
     int currentIndex = 0;
+    RxBool isBookmarked =
+        controller.isBookmarked(playingNow[currentIndex].id, isMovies).obs;
+
     return Stack(
       children: [
         Container(
@@ -39,7 +44,11 @@ class PlayingNow extends StatelessWidget {
               height: screenHeight * 0.5,
               autoPlayAnimationDuration: const Duration(seconds: 1),
               autoPlayInterval: const Duration(seconds: 5),
-              onPageChanged: (index, reason) => currentIndex = index,
+              onPageChanged: (index, reason) {
+                isBookmarked.value =
+                    controller.isBookmarked(playingNow[index].id, isMovies);
+                return currentIndex = index;
+              },
             ),
             items: playingNow
                 .map(
@@ -125,16 +134,17 @@ class PlayingNow extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               GestureDetector(
-                  onTap: () {
-                    if (isMovies) {
-                      Get.toNamed(Routes.MOVIE_DETAILS,
-                          arguments: {'movie': playingNow[currentIndex]});
-                    } else {
-                      Get.toNamed(Routes.TV_SHOW_DETAILS,
-                          arguments: {'tv_show': playingNow[currentIndex]});
-                    }
-                  },
-                  child: Icon(Icons.info_outline)),
+                onTap: () {
+                  if (isMovies) {
+                    Get.toNamed(Routes.MOVIE_DETAILS,
+                        arguments: {'movie': playingNow[currentIndex]});
+                  } else {
+                    Get.toNamed(Routes.TV_SHOW_DETAILS,
+                        arguments: {'tv_show': playingNow[currentIndex]});
+                  }
+                },
+                child: Icon(Icons.info_outline),
+              ),
               SizedBox(width: 16),
               ElevatedButton(
                 onPressed: () {},
@@ -150,7 +160,34 @@ class PlayingNow extends StatelessWidget {
                 ),
               ),
               SizedBox(width: 16),
-              Icon(Icons.bookmark_border_rounded),
+              GestureDetector(
+                onTap: () {
+                  if (isBookmarked.value) {
+                    controller.removeBookmark(
+                        playingNow[currentIndex].id, isMovies);
+                    isBookmarked.value = false;
+                  } else {
+                    controller.addBookmark(
+                        playingNow[currentIndex].id, isMovies);
+                    isBookmarked.value = true;
+                  }
+                },
+                child: Obx(
+                  () {
+                    if (isBookmarked.value) {
+                      return Icon(
+                        Icons.bookmark_rounded,
+                        color: AppColors.primary(context),
+                      );
+                    } else {
+                      return Icon(
+                        Icons.bookmark_border_rounded,
+                        color: AppColors.primary(context),
+                      );
+                    }
+                  },
+                ),
+              ),
             ],
           ),
         ),

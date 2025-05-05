@@ -22,7 +22,7 @@ class MovieDetailsController extends GetxController {
     try {
       isLoading.value = true;
 
-      final response = await TMDbService().getMovieDetails(movie.id);
+      final response = await TmdbService().getMovieDetails(movie.id);
       movieDetails = response;
     } catch (e) {
       isError.value = true;
