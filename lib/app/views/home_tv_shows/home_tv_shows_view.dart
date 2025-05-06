@@ -1,3 +1,4 @@
+import 'package:cinex/app/views/generals/widgets/error_placeholder.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -22,6 +23,9 @@ class HomeTvShowsView extends GetView<HomeTvShowsController> {
         () {
           if (controller.isLoading.value == true) {
             return _onLoading(screenHeight, screenWidth);
+          }
+          if (controller.isError.value == true) {
+            return ErrorPlaceHolder(title: "SOMETHING WENT WRONG");
           }
           if (controller.isLoading.value == false ||
               controller.isError.value == false) {

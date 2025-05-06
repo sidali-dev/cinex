@@ -1,6 +1,7 @@
 import 'package:cinex/app/controllers/home_movies_controller.dart';
 import 'package:cinex/app/helpers/helper_functions.dart';
 import 'package:cinex/app/routes/app_pages.dart';
+import 'package:cinex/app/views/generals/widgets/error_placeholder.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -22,6 +23,9 @@ class HomeMoviesView extends GetView<HomeMoviesController> {
         () {
           if (controller.isLoading.value == true) {
             return _onLoading(screenHeight, screenWidth);
+          }
+          if (controller.isError.value == true) {
+            return ErrorPlaceHolder(title: "SOMETHING WENT WRONG");
           }
           if (controller.isLoading.value == false ||
               controller.isError.value == false) {

@@ -147,7 +147,11 @@ class PlayingNow extends StatelessWidget {
               ),
               SizedBox(width: 16),
               ElevatedButton(
-                onPressed: () {},
+                onPressed: () {
+                  Get.toNamed(Routes.TRAILER, arguments: {
+                    "movie": playingNow[currentIndex],
+                  });
+                },
                 child: Row(
                   children: [
                     Icon(

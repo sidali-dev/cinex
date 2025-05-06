@@ -3,6 +3,8 @@ import 'package:cinex/app/controllers/bookmarks_controller.dart';
 import 'package:cinex/app/controllers/movie_details_controller.dart';
 import 'package:cinex/app/helpers/helper_functions.dart';
 import 'package:cinex/app/routes/app_pages.dart';
+import 'package:cinex/app/views/generals/widgets/error_placeholder.dart';
+import 'package:cinex/app/views/generals/widgets/loading_placeholder.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:iconsax/iconsax.dart';
@@ -125,14 +127,12 @@ class MovieDetailsView extends GetView<MovieDetailsController> {
               () {
                 if (controller.isLoading.value) {
                   return const Center(
-                    child: CircularProgressIndicator(),
+                    child: LoadingPlaceHolder(title: "LOADING MOVIE..."),
                   );
                 }
 
                 if (controller.isError.value) {
-                  return const Center(
-                    child: Text('Error'),
-                  );
+                  return ErrorPlaceHolder(title: "ERROR LOADING MOVIE");
                 }
                 if (!controller.isError.value && !controller.isLoading.value) {
                   return _onSuccess(context, screenWidth);
@@ -200,7 +200,11 @@ class MovieDetailsView extends GetView<MovieDetailsController> {
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               ElevatedButton(
-                onPressed: () {},
+                onPressed: () {
+                  Get.toNamed(Routes.TRAILER, arguments: {
+                    "movie": controller.movie,
+                  });
+                },
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [

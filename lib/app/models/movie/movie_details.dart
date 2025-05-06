@@ -22,7 +22,7 @@ class MovieDetails {
   final double? popularity;
   final Credits? credits;
   final VideoResponse? videos;
-  final bool adult;
+  final bool? adult;
   final dynamic belongsToCollection;
   final int? budget;
   final String? homepage;
@@ -38,6 +38,8 @@ class MovieDetails {
   MovieDetails({
     required this.id,
     required this.title,
+    required this.video,
+    this.adult,
     this.overview,
     this.posterPath,
     this.backdropPath,
@@ -52,7 +54,6 @@ class MovieDetails {
     this.popularity,
     this.credits,
     this.videos,
-    required this.adult,
     this.belongsToCollection,
     this.budget,
     this.homepage,
@@ -63,7 +64,6 @@ class MovieDetails {
     this.revenue,
     this.spokenLanguages,
     this.tagline,
-    required this.video,
   });
 
   factory MovieDetails.fromJson(Map<String, dynamic> json) {

@@ -4,6 +4,7 @@ import 'package:cinex/app/helpers/helper_functions.dart';
 import 'package:cinex/app/models/movie/movie.dart';
 import 'package:cinex/app/routes/app_pages.dart';
 import 'package:cinex/app/views/generals/widgets/auto_scrolling_text.dart';
+import 'package:cinex/app/views/generals/widgets/error_placeholder.dart';
 import 'package:cinex/app/views/generals/widgets/read_more_text.dart';
 import 'package:cinex/app/views/home_movies/widgets/movies_list_row.dart';
 import 'package:cinex/app/views/home_tv_shows/widgets/tv_shows_list_row.dart';
@@ -37,9 +38,7 @@ class ActorProfileView extends GetView<ActorProfileController> {
             );
           }
           if (controller.isError.value) {
-            return const Center(
-              child: Text("ERROR LOADING DATA"),
-            );
+            return ErrorPlaceHolder(title: "SOMETHING WENT WRONG");
           }
 
           return SingleChildScrollView(
