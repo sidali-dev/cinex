@@ -49,7 +49,7 @@ class BottomNavigation extends GetView<NavigationController> {
             NavigationDestination(
               icon: Icon(Iconsax.bookmark_2),
               selectedIcon: Icon(Iconsax.bookmark),
-              label: 'Favorites',
+              label: 'Bookmarks',
             ),
           ],
         ),
