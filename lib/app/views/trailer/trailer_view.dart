@@ -52,117 +52,120 @@ class TrailerView extends GetView<TrailerController> {
                 title: const Text('Watch Trailer'),
                 centerTitle: true,
               ),
-              body: Column(
-                children: [
-                  Material(
-                      elevation: 24,
-                      shadowColor: AppColors.primary(context),
-                      child: player),
-                  SizedBox(height: 16.0),
-                  Padding(
-                    padding: const EdgeInsets.symmetric(horizontal: 16.0),
-                    child: Text(
-                      controller.movie.title!,
-                      style: TextStyle(
-                          fontSize: 24.0, fontWeight: FontWeight.w800),
-                      textAlign: TextAlign.center,
-                      overflow: TextOverflow.ellipsis,
-                      maxLines: 2,
-                    ),
-                  ),
-                  SizedBox(height: 16.0),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      Icon(Iconsax.book_1),
-                      SizedBox(width: 8.0),
-                      Text(
-                        "Overview",
+              body: SingleChildScrollView(
+                child: Column(
+                  children: [
+                    Material(
+                        elevation: 24,
+                        shadowColor: AppColors.primary(context),
+                        child: player),
+                    SizedBox(height: 16.0),
+                    Padding(
+                      padding: const EdgeInsets.symmetric(horizontal: 16.0),
+                      child: Text(
+                        controller.movie.title!,
                         style: TextStyle(
-                            fontSize: 22.0, fontWeight: FontWeight.w700),
+                            fontSize: 24.0, fontWeight: FontWeight.w800),
                         textAlign: TextAlign.center,
+                        overflow: TextOverflow.ellipsis,
+                        maxLines: 2,
                       ),
-                    ],
-                  ),
-                  SizedBox(height: 16.0),
-                  Padding(
-                    padding: const EdgeInsets.symmetric(horizontal: 16.0),
-                    child: Text(
-                      controller.movie.overview!,
-                      style: TextStyle(
-                          fontSize: 20.0, fontWeight: FontWeight.w600),
-                      textAlign: TextAlign.center,
                     ),
-                  ),
-                  SizedBox(height: 24.0),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      Icon(Iconsax.information),
-                      SizedBox(width: 8.0),
-                      Text(
-                        "Info",
-                        style: TextStyle(
-                            fontSize: 22.0, fontWeight: FontWeight.w700),
-                      ),
-                    ],
-                  ),
-                  if (controller.movieDetails!.releaseDate != null) ...[
                     SizedBox(height: 16.0),
                     Row(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
+                        Icon(Iconsax.book_1),
+                        SizedBox(width: 8.0),
                         Text(
-                          "Realease Date:  ",
+                          "Overview",
                           style: TextStyle(
-                              fontSize: 20.0, fontWeight: FontWeight.w700),
+                              fontSize: 22.0, fontWeight: FontWeight.w700),
                           textAlign: TextAlign.center,
                         ),
-                        Text(
-                          HelperFunctions.formatDateToDate(
-                              controller.movieDetails!.releaseDate!),
-                          style: TextStyle(
-                              fontSize: 18.0, fontWeight: FontWeight.w600),
-                        ),
                       ],
-                    )
-                  ],
-                  if (controller.movieDetails!.runtime != null) ...[
-                    SizedBox(height: 8.0),
+                    ),
+                    SizedBox(height: 16.0),
+                    Padding(
+                      padding: const EdgeInsets.symmetric(horizontal: 16.0),
+                      child: Text(
+                        controller.movie.overview!,
+                        style: TextStyle(
+                            fontSize: 20.0, fontWeight: FontWeight.w600),
+                        textAlign: TextAlign.center,
+                      ),
+                    ),
+                    SizedBox(height: 24.0),
                     Row(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
+                        Icon(Iconsax.information),
+                        SizedBox(width: 8.0),
                         Text(
-                          "Duration:  ",
+                          "Info",
                           style: TextStyle(
-                              fontSize: 20.0, fontWeight: FontWeight.w700),
-                          textAlign: TextAlign.center,
-                        ),
-                        Text(
-                          "${controller.movieDetails!.runtime} min",
-                          style: TextStyle(
-                              fontSize: 18.0, fontWeight: FontWeight.w600),
+                              fontSize: 22.0, fontWeight: FontWeight.w700),
                         ),
                       ],
-                    )
-                  ],
-                  if (controller.movieDetails!.genres!.isNotEmpty) ...[
-                    SizedBox(height: 8.0),
-                    Padding(
-                      padding: const EdgeInsets.symmetric(horizontal: 16.0),
-                      child: Wrap(
-                        spacing: 8.0,
-                        children: controller.movieDetails!.genres!
-                            .map(
-                              (genre) => Chip(
-                                label: Text(genre.name),
-                              ),
-                            )
-                            .toList(),
-                      ),
                     ),
+                    if (controller.movieDetails!.releaseDate != null) ...[
+                      SizedBox(height: 16.0),
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          Text(
+                            "Realease Date:  ",
+                            style: TextStyle(
+                                fontSize: 20.0, fontWeight: FontWeight.w700),
+                            textAlign: TextAlign.center,
+                          ),
+                          Text(
+                            HelperFunctions.formatDateToDate(
+                                controller.movieDetails!.releaseDate!),
+                            style: TextStyle(
+                                fontSize: 18.0, fontWeight: FontWeight.w600),
+                          ),
+                        ],
+                      )
+                    ],
+                    if (controller.movieDetails!.runtime != null) ...[
+                      SizedBox(height: 8.0),
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          Text(
+                            "Duration:  ",
+                            style: TextStyle(
+                                fontSize: 20.0, fontWeight: FontWeight.w700),
+                            textAlign: TextAlign.center,
+                          ),
+                          Text(
+                            "${controller.movieDetails!.runtime} min",
+                            style: TextStyle(
+                                fontSize: 18.0, fontWeight: FontWeight.w600),
+                          ),
+                        ],
+                      )
+                    ],
+                    if (controller.movieDetails!.genres!.isNotEmpty) ...[
+                      SizedBox(height: 8.0),
+                      Padding(
+                        padding: const EdgeInsets.symmetric(horizontal: 16.0),
+                        child: Wrap(
+                          spacing: 8.0,
+                          children: controller.movieDetails!.genres!
+                              .map(
+                                (genre) => Chip(
+                                  label: Text(genre.name),
+                                ),
+                              )
+                              .toList(),
+                        ),
+                      ),
+                    ],
+                    SizedBox(height: 32.0),
                   ],
-                ],
+                ),
               ),
             );
           },
